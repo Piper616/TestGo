@@ -6,4 +6,13 @@ def inicio(request):
     return render(request,'home/inicio.html')
 
 def seleccion(request):
-    return render(request,'home/seleccion.html')    
+    return render(request,'home/seleccion.html')
+
+def video(request):
+    return render(request,'home/video.html') 
+
+def foto(request):
+    return render(request,'home/foto.html')
+
+def cuestionario(request):
+    return render(request,'home/cuestionario.html')     
