@@ -15,4 +15,7 @@ def foto(request):
     return render(request,'home/foto.html')
 
 def cuestionario(request):
-    return render(request,'home/cuestionario.html')     
+    return render(request,'home/cuestionario.html')    
+
+def final(request):
+    return render(request, 'home/final.html')     
