@@ -46,23 +46,20 @@
               </div>
             </div>
           </div>
-          <div class="col-4">
-            <form>
+          <div class="col-4 login-form">
+            <form method="post">
+              {% csrf_token %}
               <div class="mb-3">
                 
                 <label>Usuario</label>
-                <input type="text" class="form-control" placeholder="Nombre de usuario" name="Username">
+                <input type="email" class="form-control" placeholder="Nombre de usuario" name="Username">
                 
               </div>
               <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Contraseña</label>
                 <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
               </div>
-              <a class="btn btn-primary" 
-              href="/seleccion/"
-              role="button"
-              
-              >Ingresar</a>
+              <button type="submit" class="btn btn-primary">Ingresar</button>
               <br>
               <br>
               <a href="#">Ingrese como administrador</a>

@@ -38,6 +38,12 @@
   <div id="cuadro" class="mb-3">
     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Escribe aquí..."></textarea>
   </div>
+  {% load static %}
+  <form action="/web/fotoaletaria/">
+    <ul>
+      <li><a href="{%url 'fotoaleatoria %'}"></a></li>
+    </ul>
+  </form>
   <a id="botonf" class="btn btn-primary" 
               href="/final/"
               role="button"
