@@ -16,9 +16,14 @@
         #botonf{down: 40px;}
     </style>
   </head>
+  {% if request.session.email %}
+  {{request.session.email}} &nbsp;&nbsp; <a href="{% url 'login' %}">Cerrar Sesion</a>
+  {% else %}
   <body>
       <br>
     <h1 id="titulo">Actividades designadas</h1>
+    <hr/>
+    <a href="{% url 'login' %}">Login</a>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -32,20 +37,21 @@
     -->
     <br>
     <div class="shadow p-3 mb-5 bg-body rounded" id="texto">En esta sección se podrán a su disposición las diferentes actividades dadas por su evaluador. Estas podrán ser respondidas 
-        en el orden que usted lo prefiera, pero una vez respondidas y validadas no podrá cambiar su respuesta.
-    </div>
+      en el orden que usted lo prefiera, pero una vez respondidas y validadas no podrá cambiar su respuesta.
+  </div>
 
-    <div id="botones" class="btn-group" role="group" aria-label="Basic mixed styles example">
-        <a class="btn btn-danger" href="/video/" role="button">Video</a>
-        <a class="btn btn-warning" href="/foto/" role="button">Imagen</a>
-        <a class="btn btn-success" href="/cuestionario/" role="button">Cuestionario</a>
-    </div>
+  <div id="botones" class="btn-group" role="group" aria-label="Basic mixed styles example">
+      <a class="btn btn-danger" href="/video/" role="button">Video</a>
+      <a class="btn btn-warning" href="/foto/" role="button">Imagen</a>
+      <a class="btn btn-success" href="/cuestionario/" role="button">Cuestionario</a>
+  </div>
 
-    <a class="btn btn-primary" 
-              href="/"
-              role="button"
-              
-              >Finalizar</a>
+  <a class="btn btn-primary" 
+            href="/"
+            role="button"
+            
+            >Finalizar</a>
 
   </body>
+  {% endif %}
 </html>
