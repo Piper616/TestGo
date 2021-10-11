@@ -34,7 +34,7 @@ class Casos(models.Model):
     descripcion_caso = models.CharField(max_length=500)
     video = models.CharField(max_length=1, blank=True, null=True)
     audio = models.CharField(max_length=1, blank=True, null=True)
-
+    
     class Meta:
         managed = False
         db_table = 'casos'

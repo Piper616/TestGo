@@ -26,6 +26,9 @@ def seleccion(request):
 def index(request):
     return render(request,'home/index.html')
 
+def caso1(request):
+    return render(request, 'home/caso1.html')    
+
 def video(request):
     return render(request,'home/video.html')
 
