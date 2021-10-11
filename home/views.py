@@ -44,7 +44,10 @@ def index(request):
     return render(request,'home/index.html')
 
 def caso1(request):
-    return render(request, 'home/caso1.html')    
+    return render(request, 'home/caso1.html')   
+
+def caso2(request):
+    return render(request, "home/caso2.html") 
 
 def video(request):
     return render(request,'home/video.html')
