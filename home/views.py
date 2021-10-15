@@ -34,11 +34,36 @@ def inicio(request):
          return render(request, 'home/index.html')
         except Evaluado.DoesNotExist as e:
             messages.success(request,'Nombre de usuario o contraseña no es correcto..!')
-    return render(request, 'home/inicio.html')         
+    return render(request, 'home/inicio.html')   
+
+def loginA(request):
+    if request.method == "POST":
+        try:
+         detalleAdmin=Administrador.objects.get(email=request.POST['correo'], contraseña=request.POST['password'])
+         print("usuario=", detalleAdmin)
+         request.session['email']=detalleAdmin.email
+         return render(request, 'home/vistaA.html')
+        except Administrador.DoesNotExist as e:
+            messages.success(request,'Nombre de usuario o contraseña no es correcto..!')
+    return render(request, 'home/inicioA.html') 
+
+def loginE(request):
+    if request.method == "POST":
+        try:
+         detalleEvaluador=Evaluador.objects.get(email=request.POST['correo'], contraseña=request.POST['password'])
+         print("usuario=", detalleEvaluador)
+         request.session['email']=detalleEvaluador.email
+         return render(request, 'home/vistaE.html')
+        except Evaluador.DoesNotExist as e:
+            messages.success(request,'Nombre de usuario o contraseña no es correcto..!')
+    return render(request, 'home/inicioE.html')       
 
 
 def seleccion(request):
     return render(request,'home/seleccion.html')
+
+def vistaA(request):
+    return render(request,'home/vistaA.html')
 
 def index(request):
     return render(request,'home/index.html')
@@ -48,6 +73,12 @@ def caso1(request):
 
 def caso2(request):
     return render(request, "home/caso2.html") 
+
+def perfil(request):
+    return render(request, "home/perfil.html") 
+
+def vistaE(request):
+    return render (request, "home/vistaE.html")
 
 def video(request):
     return render(request,'home/video.html')
