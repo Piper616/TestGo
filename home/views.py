@@ -39,7 +39,7 @@ def inicio(request):
 def loginA(request):
     if request.method == "POST":
         try:
-         detalleAdmin=Administrador.objects.get(email=request.POST['correo'], contraseña=request.POST['password'])
+         detalleAdmin=Administrador.objects.get(email=request.POST['correoA'], contraseña=request.POST['passwordA'])
          print("usuario=", detalleAdmin)
          request.session['email']=detalleAdmin.email
          return render(request, 'home/vistaA.html')
@@ -50,7 +50,7 @@ def loginA(request):
 def loginE(request):
     if request.method == "POST":
         try:
-         detalleEvaluador=Evaluador.objects.get(email=request.POST['correo'], contraseña=request.POST['password'])
+         detalleEvaluador=Evaluador.objects.get(email=request.POST['correoE'], contraseña=request.POST['passwordE'])
          print("usuario=", detalleEvaluador)
          request.session['email']=detalleEvaluador.email
          return render(request, 'home/vistaE.html')
