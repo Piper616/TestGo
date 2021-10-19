@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{% static 'home/css/sidemenu.css' %}">
     <link rel="stylesheet" href="{% static 'home/sass/fondosidemenu.css' %}">
    <style>
-     
+     #tabla{width:100px; margin-left: 650px; margin-top: -70px;}
    </style>
   </head>
   {% if request.session.email %}
@@ -92,7 +92,22 @@
           });
       </script>
 
-
+      <table id="tabla" class="table">
+        <thead class="table-dark">
+          <tr>
+            <td>id</td>
+            <td>caso</td>
+            <td>estado</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ Casos.id_caso }}</td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
 
       
   </body>
