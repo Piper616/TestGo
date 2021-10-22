@@ -97,15 +97,17 @@
           <tr>
             <td>id</td>
             <td>caso</td>
-            <td>estado</td>
+            <td>descripción</td>
           </tr>
         </thead>
         <tbody>
+          {% for Casos in Casos %}
           <tr>
             <td>{{ Casos.id_caso }}</td>
-            <td></td>
-            <td></td>
+            <td>{{ Casos.nombre }}</td>
+            <td>{{ Casos.descripcion_caso }}</td>
           </tr>
+          {% endfor %}
         </tbody>
       </table>
 

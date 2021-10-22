@@ -1,28 +1,12 @@
 from django.core.checks import messages
 from django.http import HttpResponse, HttpResponseRedirect,Http404,JsonResponse
 from django.shortcuts import render, redirect
-from .models import (Administrador,
-                         AuthGroup,
-              AuthGroupPermissions,
-                    AuthPermission,
-                          AuthUser,
-                    AuthUserGroups,
-           AuthUserUserPermissions,
-                             Cargo,
-                             Casos,
-                    DjangoAdminLog,
-                 DjangoContentType,
-                  DjangoMigrations,
-                     DjangoSession,
-                    EvaluacionCaso,
-                          Evaluado,
-                         Evaluador,
-                           Persona,
-                         Resultado)
+
 from django.contrib.auth import authenticate, login, logout
-from django.db import IntegrityError
+from django.db import IntegrityError, models
 from django.urls import reverse
 from django.contrib import messages
+from . import models
 
 # Create your views here.
 def inicio(request):
@@ -56,8 +40,7 @@ def loginE(request):
          return render(request, 'home/vistaE.html')
         except Evaluador.DoesNotExist as e:
             messages.success(request,'Nombre de usuario o contraseña no es correcto..!')
-    return render(request, 'home/inicioE.html')       
-
+    return render(request, 'home/inicioE.html')    
 
 def seleccion(request):
     return render(request,'home/seleccion.html')
