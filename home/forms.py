@@ -1,5 +1,11 @@
 from django import forms
-
+from .models import (Administrador,
+                             Cargo,
+                             Casos,
+                    EvaluacionCaso,
+                          Evaluado,
+                         Evaluador,
+                         Resultado)
 
 class AdministradorForm(forms.ModelForm):
     class Meta:
