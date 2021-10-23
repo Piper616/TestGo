@@ -13,14 +13,16 @@ from django.db import IntegrityError, models
 from django.urls import reverse
 from django.contrib import messages
 from . import models
+from .forms import videoForm
+from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
 def inicio(request):
     if request.method == "POST":
         try:
-         detalleUsuario=Evaluado.objects.get(email=request.POST['correo'], contraseña=request.POST['password'])
+         detalleUsuario=Evaluado.objects.get(email_empresa=request.POST['correo'], contraseña=request.POST['password'])
          print("usuario=", detalleUsuario)
-         request.session['email']=detalleUsuario.email
+         request.session['email']=detalleUsuario.email_empresa
          return render(request, 'home/index.html')
         except Evaluado.DoesNotExist as e:
             messages.success(request,'Nombre de usuario o contraseña no es correcto..!')
@@ -29,9 +31,9 @@ def inicio(request):
 def loginA(request):
     if request.method == "POST":
         try:
-         detalleAdmin=Administrador.objects.get(email=request.POST['correoA'], contraseña=request.POST['passwordA'])
+         detalleAdmin=Administrador.objects.get(email_empresa=request.POST['correoA'], contraseña=request.POST['passwordA'])
          print("usuario=", detalleAdmin)
-         request.session['email']=detalleAdmin.email
+         request.session['email']=detalleAdmin.email_empresa
          return render(request, 'home/vistaA.html')
         except Administrador.DoesNotExist as e:
             messages.success(request,'Nombre de usuario o contraseña no es correcto..!')
@@ -40,13 +42,43 @@ def loginA(request):
 def loginE(request):
     if request.method == "POST":
         try:
-         detalleEvaluador=Evaluador.objects.get(email=request.POST['correoE'], contraseña=request.POST['passwordE'])
+         detalleEvaluador=Evaluador.objects.get(email_empresa=request.POST['correoE'], contraseña=request.POST['passwordE'])
          print("usuario=", detalleEvaluador)
-         request.session['email']=detalleEvaluador.email
+         request.session['email']=detalleEvaluador.email_empresa
          return render(request, 'home/vistaE.html')
         except Evaluador.DoesNotExist as e:
             messages.success(request,'Nombre de usuario o contraseña no es correcto..!')
     return render(request, 'home/inicioE.html')    
+
+def simple_upload(request):
+    if request.method == 'POST' and request.FILES['myfile']:
+        myfile = request.FILES['myfile']
+        fs = FileSystemStorage()
+        filename = fs.save(myfile.name, myfile)
+        uploaded_file_url = fs.url(filename)
+        return render(request, 'home/caso1.html', {
+            'uploaded_file_url': uploaded_file_url
+        })
+    return render(request, 'home/caso1.html')
+
+def showvideo(request):
+
+    lastvideo= EvaluacionCaso.objects.last()
+
+    videofile= lastvideo.media
+
+
+    form= videoForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        form.save()
+
+    
+    context= {'media': videofile,
+              'form': form
+              }
+    
+      
+    return render(request, 'home/caso1.html', context)
 
 def seleccion(request):
     return render(request,'home/seleccion.html')

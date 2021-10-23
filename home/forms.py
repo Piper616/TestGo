@@ -10,7 +10,7 @@ from .models import (Administrador,
 class AdministradorForm(forms.ModelForm):
     class Meta:
         model = Administrador
-        fields = ['id_admin','persona_rut','email','contraseña']
+        fields = ['id_admin','rut_administrador','nombres','apellido_p','apellido_m','num_cel','email_personal','direccion','fec_nac','email_empresa','contraseña','cargo_id_cargo']
 
 class CargosForm(forms.ModelForm):
     class Meta:
@@ -20,27 +20,27 @@ class CargosForm(forms.ModelForm):
 class CasosForm(forms.ModelForm):
     class Meta:
         model = Casos
-        fields = ['id_caso','nombre','descripcion_caso','video','audio']
+        fields = ['id_caso','nombre','descripcion_caso']
 
 class evaluacion_casoForm(forms.ModelForm):
     class Meta:
         model = EvaluacionCaso
-        fields = ['id_evcaso','casos_id_caso','administrador_id_admin','evaluado_id_evaluado','fecha_asignacion','fecha_realizacion']
+        fields = ['id_evcaso','casos_id_caso','administrador_id_admin','evaluado_id_evaluado','fecha_asignacion','fecha_realizacion','media']
 
-class evaluadorForm(forms.ModelForm):
+class videoForm(forms.ModelForm):
     class Meta:
-        model = Evaluador
-        fields = ['id_evaluador','persona_rut','administrador_id_admin','email','contraseña']
+        model = EvaluacionCaso
+        fields = ['media']
 
 class evaluadoForm(forms.ModelForm):
     class Meta:
         model = Evaluado
-        fields = ['id_evaluado','empresa','video_respuesta','audio_respuesta','persona_rut','email','contraseña']
+        fields = ['id_evaluado','rut_evaluado','nombres','apellido_p','apellido_m','num_cel','email_personal','direccion','fec_nac','empresa','email_empresa','contraseña','cargo_id_cargo']
 
-class PersonaForm(forms.ModelForm):
+class evaluadorForm(forms.ModelForm):
     class Meta:
-        model = Persona
-        fields = ['rut','nombres','apellido_p','apellido_m','num_cel','email_personal','direccion','fec_nac','cargo_id_cargo']
+        model = Evaluador
+        fields = ['id_evaluador','rut_evaluador','nombres','apellido_p','apellido_m','num_cel','email_personal','direccion','fec_nac','administrador_id_admin','email_empresa','contraseña','cargo_id_cargo']
 
 class ResultadoForm(forms.ModelForm):
     class Meta:

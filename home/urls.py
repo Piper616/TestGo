@@ -1,6 +1,8 @@
 from django.urls import path, re_path
 from django.contrib.auth.views import LoginView, LogoutView
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     #------Usuario-------
@@ -18,6 +20,7 @@ urlpatterns = [
     path('foto/', views.foto, name='foto'),
     path('cuestionario/', views.cuestionario, name='cuestionario'),
     path('final/', views.final, name='final'),
-
-
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
