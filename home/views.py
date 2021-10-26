@@ -23,7 +23,7 @@ def inicio(request):
          return render(request, 'home/index.html')
         except Evaluado.DoesNotExist as e:
             messages.success(request,'Nombre de usuario o contraseña no es correcto..!')
-    return render(request, 'home/inicio.html')   
+    return render(request, 'home/inicio.html')
 
 def loginA(request):
     if request.method == "POST":
@@ -34,7 +34,7 @@ def loginA(request):
          return render(request, 'home/vistaA.html')
         except Administrador.DoesNotExist as e:
             messages.success(request,'Nombre de usuario o contraseña no es correcto..!')
-    return render(request, 'home/inicioA.html') 
+    return render(request, 'home/inicioA.html')
 
 def loginE(request):
     if request.method == "POST":
@@ -47,10 +47,6 @@ def loginE(request):
             messages.success(request,'Nombre de usuario o contraseña no es correcto..!')
     return render(request, 'home/inicioE.html')    
 
-
-
-
-
 def seleccion(request):
     return render(request,'home/seleccion.html')
 
@@ -61,13 +57,13 @@ def index(request):
     return render(request,'home/index.html')
 
 def caso1(request):
-    return render(request, 'home/caso1.html')   
+    return render(request, 'home/caso1.html')
 
 def caso2(request):
-    return render(request, "home/caso2.html") 
+    return render(request, "home/caso2.html")
 
 def perfil(request):
-    return render(request, "home/perfil.html") 
+    return render(request, "home/perfil.html")
 
 def vistaE(request):
     return render (request, "home/vistaE.html")
