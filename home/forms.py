@@ -25,12 +25,7 @@ class CasosForm(forms.ModelForm):
 class evaluacion_casoForm(forms.ModelForm):
     class Meta:
         model = EvaluacionCaso
-        fields = ['id_evcaso','casos_id_caso','administrador_id_admin','evaluado_id_evaluado','fecha_asignacion','fecha_realizacion','media']
-
-class videoForm(forms.ModelForm):
-    class Meta:
-        model = EvaluacionCaso
-        fields = ['media']
+        fields = ['id_evcaso','casos_id_caso','administrador_id_admin','evaluado_id_evaluado','fecha_asignacion','fecha_realizacion']
 
 class evaluadoForm(forms.ModelForm):
     class Meta:

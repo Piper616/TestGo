@@ -12,9 +12,6 @@ from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError, models
 from django.urls import reverse
 from django.contrib import messages
-from . import models
-from .forms import videoForm
-from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
 def inicio(request):
@@ -50,35 +47,9 @@ def loginE(request):
             messages.success(request,'Nombre de usuario o contraseña no es correcto..!')
     return render(request, 'home/inicioE.html')    
 
-def simple_upload(request):
-    if request.method == 'POST' and request.FILES['myfile']:
-        myfile = request.FILES['myfile']
-        fs = FileSystemStorage()
-        filename = fs.save(myfile.name, myfile)
-        uploaded_file_url = fs.url(filename)
-        return render(request, 'home/caso1.html', {
-            'uploaded_file_url': uploaded_file_url
-        })
-    return render(request, 'home/caso1.html')
-
-def showvideo(request):
-
-    lastvideo= EvaluacionCaso.objects.last()
-
-    videofile= lastvideo.media
 
 
-    form= videoForm(request.POST or None, request.FILES or None)
-    if form.is_valid():
-        form.save()
 
-    
-    context= {'media': videofile,
-              'form': form
-              }
-    
-      
-    return render(request, 'home/caso1.html', context)
 
 def seleccion(request):
     return render(request,'home/seleccion.html')

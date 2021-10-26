@@ -56,14 +56,10 @@ class EvaluacionCaso(models.Model):
     fecha_asignacion = models.DateField()
     fecha_realizacion = models.DateField()
     video_respuesta = models.BinaryField(blank=True, null=True)
-    media = models.FileField(upload_to='myfolder/',blank=True,null=True)
 
     class Meta:
         managed = False
         db_table = 'evaluacion_caso'
-    
-    def __str__(self):
-        return self.name + ": " + str(self.videofile)
 
 
 class Evaluado(models.Model):
