@@ -1,8 +1,14 @@
-from django.urls import path, re_path
+from django.urls import path, re_path, include
 from django.contrib.auth.views import LoginView, LogoutView
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework import routers
+from .views import EvaluadoViewset, EvaluadorSerializer, EvaluadorViewset
+
+router = routers.DefaultRouter()
+router.register('Evaluado', EvaluadoViewset)
+router.register('Evaluador', EvaluadorViewset)
 
 urlpatterns = [
     #------Usuario-------
@@ -20,6 +26,14 @@ urlpatterns = [
     path('foto/', views.foto, name='foto'),
     path('cuestionario/', views.cuestionario, name='cuestionario'),
     path('final/', views.final, name='final'),
+    path('creaEvaluado/', views.creaEvaluado, name='creaEvaluado'),
+    path('creaEvaluador/', views.creaEvaluador, name='creaEvaluador'),
+    path('creaActividad/', views.creaActividad, name='creaActividad'),
+    path('asignarEvaluacion/', views.asignarEvaluacion, name='asignarEvaluacion'),
+    path('actividadPendiente/', views.actividadPendiente, name='actividadPendiente'),
+    path('revisionPendiente/', views.revisionPendiente, name='revisionPendiente'),
+    path('actividadRealizada/', views.actividadRealizada, name='actividadRealizada'),
+    path('api/', include(router.urls)),
 ]
 
 if settings.DEBUG:

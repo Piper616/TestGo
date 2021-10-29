@@ -12,12 +12,12 @@ function record(stream){
     video.srcObject = stream;
 
     let options = {
-        mimeType: 'video/webm;codecs=h264'
+        mimeType: 'video/mp4;codecs=h264'
     };
 
-    if(!MediaRecorder.isTypeSupported('video/webm;codecs=h264')){
+    if(!MediaRecorder.isTypeSupported('video/mp4;codecs=h264')){
         options = {
-            mimeType: 'video/webm;codecs=vp8'
+            mimeType: 'video/mp4;codecs=vp8'
         }
     }
 
@@ -33,7 +33,7 @@ function record(stream){
     mediaRecorder.onstop = function(){
         alert("Finalizo la grabación");
 
-        let blob = new Blob(chunks,{type:"video/webm"});
+        let blob = new Blob(chunks,{type:"video/mp4"});
 
         chunks = [];
         download(blob);
@@ -45,7 +45,7 @@ function record(stream){
 function download(blob){
     let link = document.createElement("a");
     link.href = window.URL.createObjectURL(blob);
-    link.setAttribute("download","video_recorded.webm");
+    link.setAttribute("download","video_recorded.mp4");
     link.style.display = "none";
 
     document.body.appendChild(link);

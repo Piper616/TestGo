@@ -22,6 +22,9 @@ class Administrador(models.Model):
     contraseña = models.CharField(max_length=50)
     cargo_id_cargo = models.ForeignKey('Cargo', models.DO_NOTHING, db_column='cargo_id_cargo')
 
+    def __str__(self):
+        return '{}'.format(self.id_admin)
+
     class Meta:
         managed = False
         db_table = 'administrador'
@@ -30,6 +33,9 @@ class Administrador(models.Model):
 class Cargo(models.Model):
     id_cargo = models.BigIntegerField(primary_key=True)
     detalle_cargo = models.CharField(max_length=500)
+
+    def __str__(self):
+        return '{}'.format(self.id_cargo)
 
     class Meta:
         managed = False
@@ -42,6 +48,9 @@ class Casos(models.Model):
     descripcion_caso = models.CharField(max_length=500)
     foto = models.BinaryField(blank=True, null=True)
     video = models.BinaryField(blank=True, null=True)
+
+    def __str__(self):
+        return '{}'.format(self.id_caso)
 
     class Meta:
         managed = False
@@ -78,6 +87,9 @@ class Evaluado(models.Model):
     contraseña = models.CharField(max_length=50)
     cargo_id_cargo = models.ForeignKey(Cargo, models.DO_NOTHING, db_column='cargo_id_cargo')
 
+    def __str__(self):
+        return '{}'.format(self.id_evaluado)
+
     class Meta:
         managed = False
         db_table = 'evaluado'
@@ -97,6 +109,9 @@ class Evaluador(models.Model):
     email_empresa = models.CharField(max_length=50)
     contraseña = models.CharField(max_length=50)
     cargo_id_cargo = models.ForeignKey(Cargo, models.DO_NOTHING, db_column='cargo_id_cargo')
+
+    def __str__(self):
+        return '{}'.format(self.id_evaluador)
 
     class Meta:
         managed = False
