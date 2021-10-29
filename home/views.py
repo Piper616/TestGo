@@ -92,10 +92,3 @@ def cuestionario(request):
 
 def final(request):
     return render(request, 'home/final.html')
-
-def listadopruf(request):
-    django_cursor = connection.cursor()
-    cursor = django_cursor.connection.cursor()
-    out_cur = django_cursor
-
-    cursor.callproc("CASOS_UPDATE", [out_cur])

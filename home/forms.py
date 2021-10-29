@@ -35,7 +35,7 @@ class evaluadoForm(forms.ModelForm):
 class SubirvideoForm(forms.ModelForm):
     class Meta:
         model = EvaluacionCaso
-        fields = ['video_respuesta']
+        fields = ['media']
 
 class evaluadorForm(forms.ModelForm):
     class Meta:
