@@ -46,8 +46,8 @@ class Casos(models.Model):
     id_caso = models.BigIntegerField(primary_key=True)
     nombre = models.CharField(max_length=50)
     descripcion_caso = models.CharField(max_length=500)
-    foto = models.BinaryField(blank=True, null=True)
-    video = models.BinaryField(blank=True, null=True)
+    foto = models.ImageField(blank=True, null=True)
+    video = models.FileField(blank=True, null=True)
 
     def __str__(self):
         return '{}'.format(self.id_caso)
