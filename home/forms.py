@@ -32,6 +32,11 @@ class evaluadoForm(forms.ModelForm):
         model = Evaluado
         fields = ['id_evaluado','rut_evaluado','nombres','apellido_p','apellido_m','num_cel','email_personal','direccion','fec_nac','empresa','email_empresa','contraseña','cargo_id_cargo']
 
+class SubirvideoForm(forms.ModelForm):
+    class Meta:
+        model = EvaluacionCaso
+        fields = ['video_respuesta']
+
 class evaluadorForm(forms.ModelForm):
     class Meta:
         model = Evaluador

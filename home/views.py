@@ -12,6 +12,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError, models
 from django.urls import reverse
 from django.contrib import messages
+from django.db import connection
+from .forms import SubirvideoForm
 
 # Create your views here.
 def inicio(request):
@@ -47,6 +49,17 @@ def loginE(request):
             messages.success(request,'Nombre de usuario o contraseña no es correcto..!')
     return render(request, 'home/inicioE.html')    
 
+def subirvideo(request):
+    if request.method == 'POST':
+        form = SubirvideoForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            message = "Video uploaded succesfully!"
+    else:
+        form = SubirvideoForm()
+
+    return render('home/caso1.html', locals(), context_instance=render(request))
+
 def seleccion(request):
     return render(request,'home/seleccion.html')
 
@@ -79,3 +92,10 @@ def cuestionario(request):
 
 def final(request):
     return render(request, 'home/final.html')
+
+def listadopruf(request):
+    django_cursor = connection.cursor()
+    cursor = django_cursor.connection.cursor()
+    out_cur = django_cursor
+
+    cursor.callproc("CASOS_UPDATE", [out_cur])
