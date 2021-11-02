@@ -20,6 +20,7 @@ urlpatterns = [
     path('caso2/', views.caso2, name="caso2"),
     path('vistaA/', views.vistaA, name='vistaA'),
     path('vistaE/', views.vistaE, name='vistaE'),
+    path('prueba/', views.prueba, name='prueba'),
     path('', views.perfil, name="perfil"),
     path('seleccion/', views.seleccion, name='seleccion'),
     path('video/', views.video, name='video'),
@@ -34,7 +35,4 @@ urlpatterns = [
     path('revisionPendiente/', views.revisionPendiente, name='revisionPendiente'),
     path('actividadRealizada/', views.actividadRealizada, name='actividadRealizada'),
     path('api/', include(router.urls)),
-]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -52,16 +52,16 @@ def loginE(request):
             messages.success(request,'Nombre de usuario o contraseña no es correcto..!')
     return render(request, 'home/inicioE.html')    
 
-def subirvideo(request):
-    if request.method == 'POST':
-        form = SubirvideoForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            message = "Video uploaded succesfully!"
-    else:
-        form = SubirvideoForm()
-
-    return render('home/caso1.html', locals(), context_instance=render(request))
+def caso(request):
+    if request.method == "POST":
+        try:
+         vistocaso=Casos.objects.get(email_empresa=request.POST['correoE'], contraseña=request.POST['passwordE'])
+         print("usuario=", vistocaso)
+         request.session['email']=vistocaso.email_empresa
+         return render(request, 'home/vistaE.html')
+        except Evaluador.DoesNotExist as e:
+            messages.success(request,'Nombre de usuario o contraseña no es correcto..!')
+    return render(request, 'home/inicioE.html') 
 
 def seleccion(request):
     return render(request,'home/seleccion.html')
@@ -163,3 +163,6 @@ class EvaluadoViewset(viewsets.ModelViewSet):
 class EvaluadorViewset(viewsets.ModelViewSet):
     queryset = Evaluador.objects.all()
     serializer_class = EvaluadorSerializer
+
+def prueba(request):
+    return render(request, "home/prueba.html")

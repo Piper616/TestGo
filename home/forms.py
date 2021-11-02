@@ -170,6 +170,6 @@ class asignarForm(forms.ModelForm):
 class SubirvideoForm(forms.ModelForm):
     class Meta:
         model = EvaluacionCaso
-        fields = ['media']
+        fields = ["media"]
 
 
