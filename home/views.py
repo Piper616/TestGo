@@ -1,18 +1,7 @@
 from django.core.checks import messages
 from django.http import HttpResponse, HttpResponseRedirect,Http404,JsonResponse
 from django.shortcuts import render, redirect
-from .models import (Administrador,
-                          AudAdmin,
-                          AudCargo,
-                          AudCasos,
-                       AudEvaluado,
-                      AudEvaluador,
-                             Cargo,
-                             Casos,
-                    EvaluacionCaso,
-                          Evaluado,
-                         Evaluador,
-                         Resultado)
+
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError, models
 from django.urls import reverse
@@ -59,13 +48,17 @@ def loginE(request):
 def caso(request):
     if request.method == "POST":
         try:
-         vistocaso=Casos.objects.get(email_empresa=request.POST['correoE'], contraseña=request.POST['passwordE'])
+         vistocaso=Casos.objects.get(pdf=request.POST['caso1'])
          print("usuario=", vistocaso)
-         request.session['email']=vistocaso.email_empresa
-         return render(request, 'home/vistaE.html')
+         request['caso1']=vistocaso.pdf
+         return render(request, 'home/index.html')
         except Evaluador.DoesNotExist as e:
             messages.success(request,'Nombre de usuario o contraseña no es correcto..!')
     return render(request, 'home/inicioE.html') 
+
+def pdf2(request):
+    pdf2=Casos.objects.all()
+    return render(request, 'home/caso1.html', {"pdf":pdf2})
 
 def seleccion(request):
     return render(request,'home/seleccion.html')

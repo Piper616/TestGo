@@ -85,7 +85,9 @@ WSGI_APPLICATION = 'TestGo.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
-        'NAME': '127.0.0.1:1521/xe',
+        'NAME': 'xe',
+        'host': '52.207.245.118',
+        'port': '1521',
         'USER': 'chandelle',
         'PASSWORD': '123',
         'TEST': {
