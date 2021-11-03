@@ -88,7 +88,7 @@ DATABASES = {
         'NAME': 'xe',
         'host': '172.31.18.140',
         'port': '1521',
-        'USER': 'chandelle',
+        'USER': 'felipito',
         'PASSWORD': '123',
         'TEST': {
             'USER': 'default_test',
