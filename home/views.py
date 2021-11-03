@@ -2,6 +2,11 @@ from django.core.checks import messages
 from django.http import HttpResponse, HttpResponseRedirect,Http404,JsonResponse
 from django.shortcuts import render, redirect
 from .models import (Administrador,
+                          AudAdmin,
+                          AudCargo,
+                          AudCasos,
+                       AudEvaluado,
+                      AudEvaluador,
                              Cargo,
                              Casos,
                     EvaluacionCaso,
@@ -13,7 +18,6 @@ from django.db import IntegrityError, models
 from django.urls import reverse
 from django.contrib import messages
 from django.db import connection
-from .forms import SubirvideoForm
 from rest_framework import viewsets
 from .serializers import EvaluadoSerializer, EvaluadorSerializer
 from .forms import *

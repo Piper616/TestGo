@@ -118,24 +118,21 @@ class actividadForm(forms.ModelForm):
             'id_caso',
             'nombre',
             'descripcion_caso',
-            'foto',
-            'video'
+            
         ]
 
         labels = {
             'id_caso':'Número',
             'nombre': 'Nombre Actividad',
-            'descripcion_caso': 'Descripción',
-            'foto': 'Imagen',
-            'video' : 'Video'
+            'descripcion_caso': 'Descripción'
+            
         }
 
         widgets = {
             'id_caso': forms.TextInput(attrs={'class':'form-control'}),
             'nombre': forms.TextInput(attrs={'class':'form-control'}),
-            'descripcion_caso': forms.TextInput(attrs={'class':'form-control'}),
-            'foto': forms.FileInput(attrs={'class':'form-control'}),
-            'video': forms.FileInput(attrs={'class':'form-control'})
+            'descripcion_caso': forms.TextInput(attrs={'class':'form-control'})
+            
         }
 
 class asignarForm(forms.ModelForm):
@@ -166,10 +163,5 @@ class asignarForm(forms.ModelForm):
             'fecha_asignacion': forms.DateInput(format='%d/%m/%Y')
         }
 
-
-class SubirvideoForm(forms.ModelForm):
-    class Meta:
-        model = EvaluacionCaso
-        fields = ["media"]
 
 
