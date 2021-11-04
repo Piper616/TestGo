@@ -22,6 +22,9 @@ class Administrador(models.Model):
     contraseña = models.CharField(unique=True, max_length=50)
     cargo_id_cargo = models.ForeignKey('Cargo', models.DO_NOTHING, db_column='cargo_id_cargo')
 
+    def __str__(self):
+        return '{}'.format(self.id_admin)
+
     class Meta:
         managed = False
         db_table = 'administrador'
@@ -155,6 +158,9 @@ class Cargo(models.Model):
     id_cargo = models.BigIntegerField(primary_key=True)
     detalle_cargo = models.CharField(unique=True, max_length=500)
 
+    def __str__(self):
+        return '{}'.format(self.id_cargo)
+
     class Meta:
         managed = False
         db_table = 'cargo'
@@ -166,6 +172,9 @@ class Casos(models.Model):
     descripcion_caso = models.CharField(max_length=500)
     foto = models.BinaryField(blank=True, null=True)
     pdf = models.BinaryField(blank=True, null=True)
+
+    def __str__(self):
+        return '{}'.format(self.id_caso)
 
     class Meta:
         managed = False
@@ -230,11 +239,13 @@ class Errores(models.Model):
 class EvaluacionCaso(models.Model):
     id_evcaso = models.BigIntegerField(primary_key=True)
     casos_id_caso = models.ForeignKey(Casos, models.DO_NOTHING, db_column='casos_id_caso')
-    administrador_id_admin = models.BigIntegerField()
     evaluado_id_evaluado = models.ForeignKey('Evaluado', models.DO_NOTHING, db_column='evaluado_id_evaluado')
     fecha_asignacion = models.DateField()
     fecha_realizacion = models.DateField(blank=True, null=True)
     video_respuesta = models.BinaryField(blank=True, null=True)
+
+    def __str__(self):
+        return '{}'.format(self.id_evcaso)
 
     class Meta:
         managed = False
@@ -256,6 +267,9 @@ class Evaluado(models.Model):
     contraseña = models.CharField(unique=True, max_length=50)
     cargo_id_cargo = models.ForeignKey(Cargo, models.DO_NOTHING, db_column='cargo_id_cargo')
 
+    def __str__(self):
+        return '{}'.format(self.id_evaluado)
+
     class Meta:
         managed = False
         db_table = 'evaluado'
@@ -276,6 +290,9 @@ class Evaluador(models.Model):
     contraseña = models.CharField(unique=True, max_length=50)
     cargo_id_cargo = models.ForeignKey(Cargo, models.DO_NOTHING, db_column='cargo_id_cargo')
 
+    def __str__(self):
+        return '{}'.format(self.id_evaluador)
+
     class Meta:
         managed = False
         db_table = 'evaluador'
@@ -287,6 +304,9 @@ class Resultado(models.Model):
     evaluador_id_evaluador = models.ForeignKey(Evaluador, models.DO_NOTHING, db_column='evaluador_id_evaluador')
     evaluacion_caso_id_evcaso = models.ForeignKey(EvaluacionCaso, models.DO_NOTHING, db_column='evaluacion_caso_id_evcaso')
     fecha_revision = models.DateField()
+
+    def __str__(self):
+        return '{}'.format(self.id_resultado)
 
     class Meta:
         managed = False

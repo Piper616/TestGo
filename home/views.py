@@ -174,3 +174,4 @@ class EvaluadorViewset(viewsets.ModelViewSet):
 
 def prueba(request):
     return render(request, "home/prueba.html")
+

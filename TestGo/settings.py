@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'rest_framework',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -77,7 +78,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'TestGo.wsgi.application'
-
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -85,10 +86,8 @@ WSGI_APPLICATION = 'TestGo.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
-        'NAME': 'xe',
-        'host': '172.31.18.140',
-        'port': '1521',
-        'USER': 'felipito',
+        'NAME': '127.0.0.1:1521/xe',
+        'USER': 'chandelle',
         'PASSWORD': '123',
         'TEST': {
             'USER': 'default_test',

@@ -81,10 +81,14 @@
           });
       </script>
 
-      {% for e in pdf %}
-      {pdf}
-
-      {% endfor %}
+      {% if pdf != blank %}
+      <tr>
+          <td>
+              <td><iframe src="{{pdf.pdf}}"></iframe></td>
+          </td>
+      </tr>
+        
+      {% endif %}
 
     <div id="prime">
         <video autoplay id="video"></video>
