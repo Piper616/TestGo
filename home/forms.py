@@ -130,6 +130,10 @@ class actividadForm(forms.ModelForm):
         ]
 
 class asignarForm(forms.ModelForm):
+
+    id_evcaso = forms.CharField(label='Número del caso', widget = forms.TextInput(attrs={"placeholder":"Identificción del caso"}))
+    fecha_asignacion = forms.CharField(label='Fecha de la asignación', widget = forms.TextInput(attrs={"placeholder":"dd/mm/aa"}))
+
     class Meta:
         model = EvaluacionCaso
 
@@ -141,15 +145,11 @@ class asignarForm(forms.ModelForm):
         ]
 
         labels = {
-            'id_evcaso': 'Número de Evaluación',
             'casos_id_caso': 'Número del Caso',
-            'evaluado_id_evaluado': 'Identficación Evaluado',
-            'fecha_asignacion' : 'Fecha de la asignación'
+            'evaluado_id_evaluado': 'Identficación Evaluado'
         }
 
         widgets = {
-            'id_evcaso': forms.TextInput(attrs={'class':'form-control'}),
             'casos_id_caso': forms.Select(attrs={'class':'form-control'}),
             'evaluado_id_evaluado': forms.Select(attrs={'class':'form-control'}),
-            'fecha_asignacion': forms.DateInput(format='%d/%m/%Y')
         }
