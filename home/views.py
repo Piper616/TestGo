@@ -110,7 +110,8 @@ def creaEvaluado(request):
         form = evaluadoForm(request.POST)
         if form.is_valid():
             form.save()
-        return redirect('vistaA')
+            messages.success(request, "Guardado Correctamente")
+            return redirect('creaEvaluado')
     else:
         form = evaluadoForm()
 
@@ -122,7 +123,8 @@ def creaEvaluador(request):
         form = evaluadorForm(request.POST)
         if form.is_valid():
             form.save()
-        return redirect('vistaA')
+            messages.success(request, "Guardado Correctamente")
+            return redirect('CreaEvaluador')
     else:
         form = evaluadorForm()
 
@@ -134,7 +136,8 @@ def creaActividad(request):
         form = actividadForm(request.POST)
         if form.is_valid():
             form.save()
-        return redirect('vistaA')
+            messages.success(request, "Guardado Correctamente")
+            return redirect('CreaActividad')
     else:
         form = actividadForm()
 
@@ -146,7 +149,8 @@ def asignarEvaluacion(request):
         form = asignarForm(request.POST)
         if form.is_valid():
             form.save()
-        return redirect('vistaA')
+            messages.success(request, "Guardado Correctamente")
+            return redirect('asignarEvaluacion')
     else:
         form = asignarForm()
 

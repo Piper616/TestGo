@@ -80,6 +80,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'TestGo.wsgi.application'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
+
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
