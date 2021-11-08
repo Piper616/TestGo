@@ -71,6 +71,20 @@ def pdf2(request):
     pdf2=Casos.objects.all()
     return render(request, 'home/caso1.html', {"pdf":pdf2})
 
+def entry(request):
+    if request.method == 'POST':
+        form = SubirvideoForm(request.POST, request.FILES)
+        
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect("/") 
+    else:
+        form = SubirvideoForm()
+
+    return render(request, "caso1.html", {
+        "form": form
+    })
+
 def seleccion(request):
     return render(request,'home/seleccion.html')
 

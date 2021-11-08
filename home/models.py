@@ -242,7 +242,7 @@ class EvaluacionCaso(models.Model):
     evaluado_id_evaluado = models.ForeignKey('Evaluado', models.DO_NOTHING, db_column='evaluado_id_evaluado')
     fecha_asignacion = models.DateField()
     fecha_realizacion = models.DateField(blank=True, null=True)
-    video_respuesta = models.BinaryField(blank=True, null=True)
+    video_respuesta = models.FileField(upload_to="media/",blank=True, null=True)
 
     def __str__(self):
         return '{}'.format(self.id_evcaso)

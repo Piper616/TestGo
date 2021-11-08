@@ -153,3 +153,9 @@ class asignarForm(forms.ModelForm):
             'casos_id_caso': forms.Select(attrs={'class':'form-control'}),
             'evaluado_id_evaluado': forms.Select(attrs={'class':'form-control'}),
         }
+
+
+class SubirvideoForm(forms.ModelForm):
+    class meta:
+        model = EvaluacionCaso
+        fields = 'video_respuesta'
