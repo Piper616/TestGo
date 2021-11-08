@@ -21,6 +21,8 @@ from django.db import connection
 from rest_framework import viewsets
 from .serializers import EvaluadoSerializer, EvaluadorSerializer
 from .forms import *
+import datetime
+
 
 # Create your views here.
 def inicio(request):
@@ -168,7 +170,9 @@ def asignarEvaluacion(request):
     else:
         form = asignarForm()
 
-    return render(request, 'home/asignarEvaluacion.html',{'form':form})
+    fecha_actual = "{0}".format(datetime.datetime.now().strftime("%d/%m/%Y"))
+
+    return render(request, 'home/asignarEvaluacion.html',{'form':form,"fecha_actual":fecha_actual})
 
 def actividadPendiente(request):
     actividadPendiente = EvaluacionCaso.objects.all()

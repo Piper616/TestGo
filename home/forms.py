@@ -7,6 +7,8 @@ from .models import *
 import datetime
 from django.forms import ValidationError
 
+class DateInput(forms.DateInput):
+    input_type = 'date'
 
 class evaluadoForm(forms.ModelForm):
 
@@ -28,7 +30,7 @@ class evaluadoForm(forms.ModelForm):
     num_cel = forms.CharField(label='Número de celular', widget = forms.TextInput(attrs={"placeholder":"Ej: 9 999 99 999"}))
     email_personal = forms.CharField(label='Email Personal', widget = forms.TextInput(attrs={"placeholder":"ej: persona@personal.com"}))
     direccion = forms.CharField(label='Dirección', widget = forms.TextInput(attrs={"placeholder":"Ingres dirección del evaluado"}))
-    fec_nac = forms.CharField(label='Fecha de Nacimiento', widget = forms.TextInput(attrs={"placeholder":"Ingrese fecha de nacimiento del evaluado"}))
+    fec_nac = forms.DateField(label='Fecha de Nacimiento', widget = DateInput)
     empresa = forms.CharField(label='Empresa perteneciente', widget = forms.TextInput(attrs={"placeholder":"Ingrese empresa del evaluado"}))
     email_empresa = forms.CharField(label='Email contacto empresa', widget = forms.TextInput(attrs={"placeholder":"ej: persona@empresa.cl"}))
     contraseña = forms.CharField(label='Contraseña', widget = forms.TextInput(attrs={"placeholder":"Ingrese contraseña para ingreso"}))
