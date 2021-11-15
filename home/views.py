@@ -69,9 +69,9 @@ def caso(request):
             messages.success(request,'Nombre de usuario o contraseña no es correcto..!')
     return render(request, 'home/inicioE.html') 
 
-def pdf2(request):
-    pdf2=Casos.objects.all()
-    return render(request, 'home/caso1.html', {"pdf":pdf2})
+def archivo(request):
+    archivos =Casos.objects.all()
+    return render(request, 'home/caso1.html', {"archivos":archivos})
 
 def entry(request):
     if request.method == 'POST':
@@ -86,6 +86,13 @@ def entry(request):
     return render(request, "caso1.html", {
         "form": form
     })
+
+def videof(request):
+    form = SubirvideoForm(request.POST or None, request.file or None)
+    context = { 
+        'form':form,
+    }
+    return render(request, 'home/caso1.html', context)
 
 def seleccion(request):
     return render(request,'home/seleccion.html')
