@@ -88,15 +88,12 @@ MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
-        'NAME': '127.0.0.1:1521/xe',
+        'NAME': 'xe',
         'USER': 'chandelle',
         'PASSWORD': '123',
-        'TEST': {
-            'USER': 'default_test',
-            'TBLSPACE': 'default_test_tbls',
-            'TBLSPACE_TMP': 'default_test_tbls_tmp',
-        },
-    },
+        'HOST': '107.21.139.35',
+        'PORT': '1521',
+    }
 }
 
 

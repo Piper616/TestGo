@@ -1,18 +1,7 @@
 from django.core.checks import messages
 from django.http import HttpResponse, HttpResponseRedirect,Http404,JsonResponse
 from django.shortcuts import render, redirect
-from .models import (Administrador,
-                          AudAdmin,
-                          AudCargo,
-                          AudCasos,
-                       AudEvaluado,
-                      AudEvaluador,
-                             Cargo,
-                             Casos,
-                    EvaluacionCaso,
-                          Evaluado,
-                         Evaluador,
-                         Resultado)
+
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError, models
 from django.urls import reverse
