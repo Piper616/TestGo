@@ -29,8 +29,6 @@ class evaluadoForm(forms.ModelForm):
     apellido_m = forms.CharField(label='Apellido Materno', widget = forms.TextInput(attrs={"placeholder":"Ingrese apellido materno"}))
     num_cel = forms.CharField(label='Número de celular', widget = forms.TextInput(attrs={"placeholder":"Ej: 9 999 99 999"}))
     email_personal = forms.CharField(label='Email Personal', widget = forms.TextInput(attrs={"placeholder":"ej: persona@personal.com"}))
-    direccion = forms.CharField(label='Dirección', widget = forms.TextInput(attrs={"placeholder":"Ingres dirección del evaluado"}))
-    fec_nac = forms.DateField(label='Fecha de Nacimiento', widget = DateInput)
     empresa = forms.CharField(label='Empresa perteneciente', widget = forms.TextInput(attrs={"placeholder":"Ingrese empresa del evaluado"}))
     email_empresa = forms.CharField(label='Email contacto empresa', widget = forms.TextInput(attrs={"placeholder":"ej: persona@empresa.cl"}))
     contraseña = forms.CharField(label='Contraseña', widget = forms.TextInput(attrs={"placeholder":"Ingrese contraseña para ingreso"}))
@@ -46,8 +44,6 @@ class evaluadoForm(forms.ModelForm):
             'apellido_m',
             'num_cel',
             'email_personal',
-            'direccion',
-            'fec_nac',
             'empresa',
             'email_empresa',
             'contraseña',
@@ -81,8 +77,6 @@ class evaluadorForm(forms.ModelForm):
     apellido_m = forms.CharField(label='Apellido Materno', widget = forms.TextInput(attrs={"placeholder":"Ingrese apellido materno"}))
     num_cel = forms.CharField(label='Número de celular', widget = forms.NumberInput(attrs={"placeholder":"ej: 9 999 999 99"}))
     email_personal = forms.CharField(label='Email Personal', widget = forms.TextInput(attrs={"placeholder":"ej: ejemplo@ejemplo.com"}))
-    direccion = forms.CharField(label='Dirección', widget = forms.TextInput(attrs={"placeholder":"Ingrese su Dirección actual"}))
-    fec_nac = forms.CharField(label='Fecha de Nacimiento', widget = forms.TextInput(attrs={"placeholder":"Fecha de nacimiento"}))
     email_empresa = forms.CharField(label='Email empresa', widget = forms.TextInput(attrs={"placeholder":"ej: empresa@ejemplo.com"}))
     contraseña = forms.CharField(label='Contraseña', widget = forms.TextInput(attrs={"placeholder":"Ingrese contraseña"}))
 
@@ -97,23 +91,11 @@ class evaluadorForm(forms.ModelForm):
             'apellido_m',
             'num_cel',
             'email_personal',
-            'direccion',
-            'fec_nac',
-            'administrador_id_admin',
             'email_empresa',
             'contraseña',
-            'cargo_id_cargo'
         ]
 
-        labels = {
-            'administrados_id_admin' : 'Administrador a cargo',
-            'cargo_id_cargo' : 'Cargo actual'
-        }
-    
-        widgets = {
-            'administrador_id_admin': forms.Select(attrs={'class':'form-control'}),
-            'cargo_id_cargo': forms.Select(attrs={'class':'form-control'})
-        }
+        
 
 
 class actividadForm(forms.ModelForm):

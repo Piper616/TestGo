@@ -180,11 +180,11 @@ def actividadPendiente(request):
     return render(request, 'home/actividadPendiente.html', {"pendiente" : actividadPendiente})
 
 def revisionPendiente(request):
-    revisionPendiente = Resultado.objects.all()
+    revisionPendiente = EvaluacionCaso.objects.all()
     return render(request, 'home/revisionPendiente.html', {"revision" : revisionPendiente})
 
 def actividadRealizada(request):
-    actividadRealizada = Resultado.objects.all()
+    actividadRealizada = EvaluacionCaso.objects.all()
     return render(request, 'home/actividadRealizada.html', {"realizada" : actividadRealizada})
 
 class EvaluadoViewset(viewsets.ModelViewSet):
