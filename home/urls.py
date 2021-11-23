@@ -12,6 +12,7 @@ router.register('Evaluador', EvaluadorViewset)
 
 urlpatterns = [
     #------Usuario-------
+    path('correoEvaluado/', views.correoEvaluado, name='correoEvaluado'),
     path('login/', views.inicio, name='login'),
     path('loginA/', views.loginA, name='loginA'),
     path('loginE/', views.loginE, name='loginE'),

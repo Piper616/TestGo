@@ -149,10 +149,12 @@ LOGOUT_REDIRECT_URL = reverse_lazy('inicio')
 
 # Email 
 
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 'smtp.googlemail.com'
 
 EMAIL_PORT = 587
 
-EMAIL_HOST_USER = 'testgo.proyecto@gmail.com'
+EMAIL_HOST_USER = 'pruebaemailtestgo@gmail.com'
 
-EMAIL_HOST_PASSWORD = 'testgo619.'
+EMAIL_HOST_PASSWORD = 'testgo123.321.email'
+
+EMAIL_USE_TLS = True

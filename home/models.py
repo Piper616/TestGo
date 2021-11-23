@@ -21,6 +21,11 @@ class Administrador(models.Model):
     email_empresa = models.CharField(max_length=50)
     contraseña = models.CharField(unique=True, max_length=50)
 
+    def __str__(self):
+        cadena = self.nombres + " " + self.apellido_p + " " + self.apellido_m
+        return cadena
+
+
     class Meta:
         managed = False
         db_table = 'administrador'
@@ -154,6 +159,10 @@ class Cargo(models.Model):
     id_cargo = models.BigIntegerField(primary_key=True)
     detalle_cargo = models.CharField(unique=True, max_length=500)
 
+    def __str__(self):
+        cadena = self.detalle_cargo
+        return cadena
+
     class Meta:
         managed = False
         db_table = 'cargo'
@@ -165,6 +174,10 @@ class Casos(models.Model):
     descripcion_caso = models.CharField(max_length=500)
     foto = models.BinaryField(blank=True, null=True)
     pdf = models.BinaryField(blank=True, null=True)
+
+    def __str__(self):
+        cadena = self.nombre
+        return cadena
 
     class Meta:
         managed = False
@@ -238,6 +251,10 @@ class EvaluacionCaso(models.Model):
     fecha_revision = models.DateField(blank=True, null=True)
     admin_id_admin = models.ForeignKey(Administrador, models.DO_NOTHING, db_column='admin_id_admin')
 
+    def __str__(self):
+        cadena = self.id_evcaso
+        return cadena
+
     class Meta:
         managed = False
         db_table = 'evaluacion_caso'
@@ -250,7 +267,7 @@ class Evaluado(models.Model):
     apellido_p = models.CharField(max_length=50)
     apellido_m = models.CharField(max_length=50)
     num_cel = models.BigIntegerField(unique=True)
-    email_personal = models.CharField(max_length=25)
+    email_personal = models.CharField(max_length=50)
     empresa = models.CharField(max_length=50)
     email_empresa = models.CharField(unique=True, max_length=50)
     contraseña = models.CharField(unique=True, max_length=50)
@@ -258,6 +275,10 @@ class Evaluado(models.Model):
     nombre_jefe = models.CharField(max_length=100, blank=True, null=True)
     cel_jefe = models.CharField(max_length=15, blank=True, null=True)
     email_jefe = models.CharField(max_length=50, blank=True, null=True)
+
+    def __str__(self):
+        cadena = self.nombres + " " + self.apellido_p + " " + self.apellido_m
+        return cadena
 
     class Meta:
         managed = False
@@ -271,9 +292,13 @@ class Evaluador(models.Model):
     apellido_p = models.CharField(max_length=50)
     apellido_m = models.CharField(max_length=50)
     num_cel = models.BigIntegerField(unique=True)
-    email_personal = models.CharField(unique=True, max_length=25)
+    email_personal = models.CharField(unique=True, max_length=50)
     email_empresa = models.CharField(unique=True, max_length=50)
     contraseña = models.CharField(unique=True, max_length=50)
+
+    def __str__(self):
+        cadena = self.nombres + " " + self.apellido_p + " " + self.apellido_m
+        return cadena
 
     class Meta:
         managed = False

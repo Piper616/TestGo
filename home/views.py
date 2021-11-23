@@ -16,6 +16,9 @@ from rest_framework import viewsets
 from .serializers import EvaluadoSerializer, EvaluadorSerializer
 from .forms import *
 import datetime
+from django.template.loader import get_template
+from django.core.mail import EmailMultiAlternatives
+from django.conf import settings
 
 
 # Create your views here.
@@ -121,10 +124,28 @@ def cuestionario(request):
 def final(request):
     return render(request, 'home/final.html')
 
-def creaEvaluado(request):
+def send_email(email_empresa,contraseña):
+    context = {'email_empresa':email_empresa, 'contraseña': contraseña}
+    template = get_template('home/correoEvaluado.html')
+    content = template.render(context)
 
+    email = EmailMultiAlternatives(
+        'ThinkGo',
+        'Plataforma TestGo',
+        settings.EMAIL_HOST_USER,
+        [email_empresa]
+    )
+
+    email.attach_alternative(content, 'text/html')
+    email.send()
+
+def creaEvaluado(request):
     if request.method == 'POST':
         form = evaluadoForm(request.POST)
+        email_empresa = request.POST.get('email_empresa')
+        contraseña = request.POST.get('contraseña')
+        send_email(email_empresa,contraseña)
+        
         if form.is_valid():
             form.save()
             messages.success(request, "Guardado Correctamente")
@@ -132,7 +153,7 @@ def creaEvaluado(request):
     else:
         form = evaluadoForm()
 
-    return render(request, 'home/creaEvaluado.html', {'form' : form})
+    return render(request, 'home/creaEvaluado.html', {'form' : form })
 
 def creaEvaluador(request):
 
@@ -175,6 +196,10 @@ def asignarEvaluacion(request):
 
     return render(request, 'home/asignarEvaluacion.html',{'form':form,"fecha_actual":fecha_actual})
 
+def fecha_hoy(request):
+    fecha_actual = "{0}".format(datetime.datetime.now().strftime("%d/%m/%Y"))
+    return render(request,'TestGo/home/forms.py',{"fecha_actual":fecha_actual})
+
 def actividadPendiente(request):
     actividadPendiente = EvaluacionCaso.objects.all()
     return render(request, 'home/actividadPendiente.html', {"pendiente" : actividadPendiente})
@@ -197,4 +222,7 @@ class EvaluadorViewset(viewsets.ModelViewSet):
 
 def prueba(request):
     return render(request, "home/prueba.html")
+
+def correoEvaluado(request):
+    return render(request, "home/correoEvaluado.html")
 
