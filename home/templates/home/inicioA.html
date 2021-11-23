@@ -11,9 +11,8 @@
 
     <title>TestGo</title>
     <link rel="stylesheet" href="{% static 'home/css/loginstyle.css' %}">
+    <link rel="stylesheet" href="{% static 'home/js/code.js' %}">
     <style>
-      #login{}
-      #carta{}
       #titulo{margin-left:  650px;}
     </style>
   </head>
@@ -52,22 +51,22 @@
               </div>
               <div class="group">
                 <label for="pass" class="label">Contraseña</label>
-                <input id="pass" type="password" class="input" data-type="password" placeholder="Contraseña" name="passwordA" required>
+                <input id="pass" type="password" class="input" data-type="password" placeholder="Contraseña" name="passwordA" onclick="encriptar(this)" required>
               </div>
               <div class="group">
-                <input type="submit" class="button" value="Entrar">
+                <input id="encriptar" type="submit" class="button" value="Entrar" onclick="encriptar(this)">
                 &nbsp;&nbsp;
               </div>
               <div class="hr"></div>
+              {% if messages %}
+                {% for msg in messages %}
+                <b>{{msg}}</b>
+                {% endfor %}
+              {% endif %}
             </form>
           </div>
         </div>
       </div>
-      {% if messages %}
-          {% for msg in messages %}
-          <b>{{msg}}</b>
-          {% endfor %}
-          {% endif %}
     </div>
   </body>
 </html>

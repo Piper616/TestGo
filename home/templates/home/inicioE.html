@@ -59,15 +59,15 @@
                 &nbsp;&nbsp;
               </div>
               <div class="hr"></div>
+              {% if messages %}
+                {% for msg in messages %}
+                <b>{{msg}}</b>
+                {% endfor %}
+                {% endif %}
             </form>
           </div>
         </div>
       </div>
-      {% if messages %}
-          {% for msg in messages %}
-          <b>{{msg}}</b>
-          {% endfor %}
-          {% endif %}
     </div>
   </body>
 </html>

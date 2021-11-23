@@ -54,19 +54,19 @@
                 <input id="pass" type="password" class="input" data-type="password" placeholder="Contraseña" name="password" required>
               </div>
               <div class="group">
-                <input type="submit" class="button" value="Entrar">
+                <input type="submit" class="button" value="Entrar" onclick="encriptar(this)">
                 &nbsp;&nbsp;
               </div>
               <div class="hr"></div>
+              {% if messages %}
+                {% for msg in messages %}
+                <b>{{msg}}</b>
+                {% endfor %}
+                {% endif %}
             </form>
           </div>
         </div>
       </div>
-      {% if messages %}
-          {% for msg in messages %}
-          <b>{{msg}}</b>
-          {% endfor %}
-          {% endif %}
     </div>
   </body>
 </html>
