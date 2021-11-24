@@ -53,36 +53,11 @@ def loginE(request):
          return render(request, 'home/vistaE.html')
         except Evaluador.DoesNotExist as e:
             messages.success(request,'Nombre de usuario o contraseña no es correcto..!')
-    return render(request, 'home/inicioE.html')    
-
-def caso(request):
-    if request.method == "POST":
-        try:
-         vistocaso=Casos.objects.get(pdf=request.POST['caso1'])
-         print("usuario=", vistocaso)
-         request['caso1']=vistocaso.pdf
-         return render(request, 'home/index.html')
-        except Evaluador.DoesNotExist as e:
-            messages.success(request,'Nombre de usuario o contraseña no es correcto..!')
     return render(request, 'home/inicioE.html') 
 
 def archivo(request):
     archivos =Casos.objects.all()
     return render(request, 'home/caso1.html', {"archivos":archivos})
-
-def entry(request):
-    if request.method == 'POST':
-        form = SubirvideoForm(request.POST, request.FILES)
-        
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect("/") 
-    else:
-        form = SubirvideoForm()
-
-    return render(request, "caso1.html", {
-        "form": form
-    })
 
 def videof(request):
     form = SubirvideoForm(request.POST or None, request.file or None)
