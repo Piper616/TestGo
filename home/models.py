@@ -246,7 +246,7 @@ class EvaluacionCaso(models.Model):
     evaluado_id_evaluado = models.ForeignKey('Evaluado', models.DO_NOTHING, db_column='evaluado_id_evaluado')
     fecha_asignacion = models.DateField()
     fecha_realizacion = models.DateField(blank=True, null=True)
-    video_respuesta = models.BinaryField(blank=True, null=True)
+    video_respuesta = models.FileField(upload_to="media/" ,blank=True, null=True)
     evaluador_id_evaluador = models.ForeignKey('Evaluador', models.DO_NOTHING, db_column='evaluador_id_evaluador')
     descripcion = models.CharField(max_length=500, blank=True, null=True)
     fecha_revision = models.DateField(blank=True, null=True)

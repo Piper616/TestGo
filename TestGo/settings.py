@@ -27,8 +27,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-_-bsld^4q0ed9w5u2&1$+pg5#r!vva-0#x381y6x7n)+-rq8s0'
 
+GOOGLE_RECAPTCHA_SITE_KEY = '6LetlGAdAAAAAJ9hPKgSkcVF-qWcTZUN847WswF1' #your reCAPTCHA SITE key 
+
+GOOGLE_RECAPTCHA_SECRET_KEY = '6LetlGAdAAAAAHxtc6dClz5kTGkAtxhMyqbiK9wa' #your reCAPTCHA SECRET key 
+
+
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -134,7 +139,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATICFILES_DIRS=[os.path.join(BASE_DIR,"static")]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
