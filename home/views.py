@@ -55,7 +55,7 @@ def loginE(request):
             messages.success(request,'Nombre de usuario o contraseña no es correcto..!')
     return render(request, 'home/inicioE.html') 
 
-def archivo(request):
+def archivo(request, pdf):
     archivos =Casos.objects.all()
     return render(request, 'home/caso1.html', {"archivos":archivos})
 

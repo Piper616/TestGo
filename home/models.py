@@ -254,7 +254,7 @@ class EvaluacionCaso(models.Model):
 
     def __str__(self):
         cadena = self.id_evcaso
-        return cadena
+        return str(cadena)
 
     class Meta:
         managed = False
