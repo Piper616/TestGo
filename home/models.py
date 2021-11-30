@@ -1,4 +1,4 @@
-﻿# This is an auto-generated Django model module.
+# This is an auto-generated Django model module.
 # You'll have to do the following manually to clean this up:
 #   * Rearrange models' order
 #   * Make sure each model has one field with primary_key=True
@@ -20,6 +20,11 @@ class Administrador(models.Model):
     fec_nac = models.CharField(max_length=20, blank=True, null=True)
     email_empresa = models.CharField(max_length=50)
     contraseña = models.CharField(unique=True, max_length=500)
+
+    def __str__(self):
+        cadena = self.nombres + " " + self.apellido_p + " " + self.apellido_m
+        return cadena
+
 
     class Meta:
         managed = False
@@ -154,6 +159,11 @@ class Cargo(models.Model):
     id_cargo = models.BigIntegerField(primary_key=True)
     detalle_cargo = models.CharField(unique=True, max_length=1000)
 
+    def __str__(self):
+        cadena = self.detalle_cargo
+        return cadena
+
+
     class Meta:
         managed = False
         db_table = 'cargo'
@@ -165,6 +175,11 @@ class Casos(models.Model):
     descripcion_caso = models.CharField(max_length=500)
     pdf = models.BinaryField(blank=True, null=True)
     foto = models.BinaryField(blank=True, null=True)
+
+    def __str__(self):
+        cadena = self.nombre
+        return cadena
+
 
     class Meta:
         managed = False
@@ -239,6 +254,11 @@ class EvaluacionCaso(models.Model):
     nota = models.IntegerField(blank=True, null=True)
     video_respuesta = models.BinaryField(blank=True, null=True)
 
+    def __str__(self):
+        cadena = self.id_evcaso
+        return str(cadena)
+
+
     class Meta:
         managed = False
         db_table = 'evaluacion_caso'
@@ -260,6 +280,11 @@ class Evaluado(models.Model):
     cel_jefe = models.CharField(max_length=15, blank=True, null=True)
     email_jefe = models.CharField(max_length=50, blank=True, null=True)
 
+    def __str__(self):
+        cadena = self.nombres + " " + self.apellido_p + " " + self.apellido_m
+        return cadena
+
+
     class Meta:
         managed = False
         db_table = 'evaluado'
@@ -276,6 +301,11 @@ class Evaluador(models.Model):
     email_empresa = models.CharField(unique=True, max_length=50)
     contraseña = models.CharField(unique=True, max_length=500)
     admin_id_admin = models.ForeignKey(Administrador, models.DO_NOTHING, db_column='admin_id_admin', blank=True, null=True)
+
+    def __str__(self):
+        cadena = self.nombres + " " + self.apellido_p + " " + self.apellido_m
+        return cadena
+
 
     class Meta:
         managed = False
