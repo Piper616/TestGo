@@ -1,12 +1,7 @@
 from django.core.checks import messages
 from django.http import HttpResponse, HttpResponseRedirect,Http404,JsonResponse
 from django.shortcuts import render, redirect
-from .models import (Administrador,
-                             Cargo,
-                             Casos,
-                    EvaluacionCaso,
-                          Evaluado,
-                         Evaluador)
+
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError, models
 from django.urls import reverse
@@ -65,6 +60,12 @@ def videof(request):
         'form':form,
     }
     return render(request, 'home/caso1.html', context)
+
+def resume(request, id_caso):
+    resume = Casos.objects.get(Casos=id_caso)
+    fsock = open(resume.location, 'r')
+    response = render(fsock, mimetype='pdf')
+    return render(request, 'home/caso1.html')
 
 def seleccion(request):
     return render(request,'home/seleccion.html')
