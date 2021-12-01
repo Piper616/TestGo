@@ -1,4 +1,10 @@
 from django.contrib import admin
-
+from .models import *
 # Register your models here.
 
+admin.site.register(Administrador)
+admin.site.register(Cargo)
+admin.site.register(Casos)
+admin.site.register(EvaluacionCaso)
+admin.site.register(Evaluado)
+admin.site.register(Evaluador)
