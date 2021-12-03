@@ -97,9 +97,6 @@ def index(request):
 def caso1(request):
     return render(request, 'home/caso1.html')
 
-def caso2(request):
-    return render(request, "home/caso2.html")
-
 def perfil(request):
     return render(request, "home/perfil.html")
 
