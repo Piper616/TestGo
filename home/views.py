@@ -14,6 +14,7 @@ import datetime
 from django.template.loader import get_template
 from django.core.mail import EmailMultiAlternatives
 from django.conf import settings
+import cx_Oracle
 
 
 # Create your views here.
@@ -60,6 +61,23 @@ def videof(request):
         'form':form,
     }
     return render(request, 'home/caso1.html', context)
+
+def upload(request):
+    data = {
+        'video':subir_video()
+    }
+    if request.method == 'POST':
+        video = request.POST.get('file')
+
+    return render(request, 'home/caso1.html', data)
+
+def subir_video(id_video, video, id_evaluado):
+    django_cursor = connection.cursor()
+    cursor = django_cursor.connection.cursor()
+    salida = cursor.var(cx_Oracle.NUMBER)
+    cursor.callproc('SP_INSERT_VIDEO', [id_video, video, id_evaluado, salida])
+    return salida.getvalue() 
+
 
 def resume(request, id_caso):
     resume = Casos.objects.get(Casos=id_caso)
