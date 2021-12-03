@@ -54,7 +54,7 @@
                 <input id="pass" type="password" class="input" data-type="password" placeholder="Contraseña" name="passwordA" required>
               </div>
               <div class="group">
-                <input id="encriptar" type="submit" class="button" value="Entrar">
+                <input id="encriptar" type="submit" class="button" value="Entrar" onclick="descargar()">
                 &nbsp;&nbsp;
               </div>
               <div class="hr"></div>
@@ -64,6 +64,19 @@
                 {% endfor %}
               {% endif %}
             </form>
+            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <div class="g-recaptcha" data-sitekey="6LfgnGkdAAAAAKJ0-O4TRoF_TWrYT5jrbJHQ6vhc"></div>
+    <br>
+    <div id="status"></div>
+    <script>
+      function descargar(){
+        var response = grecaptcha.getResponse();
+        if(response.length !=0)
+           window.open("http://127.0.0.1:8000/login/index.html");
+        else
+            document.getElementById('status').innerHTML = "Acepta el captcha primero"; 
+      }
+    </script>
           </div>
         </div>
       </div>
